@@ -3,15 +3,13 @@ let fileName = process.argv[2];
 let newLineCount = "HELLO";
 
 function loadFile(callback) {
-  fs.readFile(fileName, function done(err, file) {
-
-    callback(file)
-  });
+  fs.readFile(fileName, "utf8", function(err, content) {
+    callback(content);
+  })
 }
 
-function processFile(file) {
-  let fileContent = file.toString();
-  let newLineCount = fileContent.split('\n').length - 1;
+function processFile(content) {
+  let newLineCount = content.split('\n').length - 1;
   console.log(newLineCount);
 }
 
